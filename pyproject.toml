@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "personal-curator"
+version = "0.1.0"
+description = "A personal news-to-digest workbench: collect, interpret, keep, present"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [{ name = "Zhu Li" }]
+license = { text = "MIT" }
+
+dependencies = [
+    "jinja2>=3.1,<4.0",      # report JSON -> static HTML
+    "markdown>=3.6,<4.0",    # inline/block markdown inside report fields
+    "feedparser>=6.0,<7.0",  # RSS / Atom
+    "pydantic>=2.0,<3.0",    # RawItem validation
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0,<9.0",
+    "ruff>=0.4,<1.0",
+]
+
+[project.scripts]
+curator-ingest = "curator.ingest_cli:main"
+curator-render = "curator.render:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"curator" = ["templates/*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "B", "UP", "SIM", "RUF"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

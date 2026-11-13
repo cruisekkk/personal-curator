@@ -1,0 +1,181 @@
+{
+  "date": "2026-03-04",
+  "run_id": "20260304-0631",
+  "window": {
+    "from": "2026-03-03T14:00:00Z",
+    "to": "2026-03-04T14:00:00Z"
+  },
+  "stats": {
+    "raw_items": 76,
+    "events": 6,
+    "est_read_min": 17,
+    "updated_events": 3,
+    "raw_chars": 187000,
+    "digest_chars": 4200
+  },
+  "events": [
+    {
+      "cluster_id": "evt-20260302-halcyon-price-cut",
+      "action": "update",
+      "title": "Cinderpeak Compute matches Halcyon's price cut within 48 hours",
+      "takeaway": "The pass-through became a price war: Cinderpeak matched without claiming any cost decline.",
+      "priority": "P0",
+      "tag": "Trends",
+      "display": "expanded",
+      "depth": "standard",
+      "read_budget_min": 8,
+      "what_changed": "Cinderpeak Compute cut its standard tier to $1.45, five cents below Halcyon, and gave no cost figures.",
+      "data_points": [
+        "Cinderpeak standard tier: $2.40 to **$1.45** per million tokens, effective immediately",
+        "Cinderpeak's fleet is on average 14 months older than Halcyon's",
+        "A third provider, Mossgate Systems, said it is \"reviewing\" its price list"
+      ],
+      "argument": "On Monday the cut looked like a pass-through of lower costs. A rival with an older fleet matching in two days, and undercutting by a token amount, suggests share is the real target. The provider with the lowest serving cost can sustain this longest; the others are now choosing between margin and customers.",
+      "counterpoints": [
+        "List prices matter less than committed-use discounts, which neither company disclosed",
+        "A price war for inference can still grow total spend if usage is elastic enough"
+      ],
+      "sources": [
+        {
+          "id": 115,
+          "title": "Cinderpeak Compute cuts inference prices to match rival",
+          "url": "https://example.com/news/cinderpeak-pricing",
+          "published_at": "2026-03-04T08:05:00Z"
+        },
+        {
+          "id": 116,
+          "title": "What two price cuts in three days mean for cloud margins",
+          "url": "https://example.com/news/cloud-pricing-analysis",
+          "published_at": "2026-03-04T12:30:00Z"
+        }
+      ]
+    },
+    {
+      "cluster_id": "evt-20260304-tallowmere-ipo",
+      "action": "new",
+      "title": "Tallowmere Robotics files for an IPO",
+      "takeaway": "The filing shows real revenue and a real customer concentration problem.",
+      "priority": "P1",
+      "tag": "Trends",
+      "display": "expanded",
+      "depth": "standard",
+      "read_budget_min": 5,
+      "data_points": [
+        "2025 revenue $412m, up 61%; operating loss $58m",
+        "Top two customers account for 47% of revenue",
+        "Order backlog $1.3bn, of which 70% is deliverable after 2026"
+      ],
+      "argument": "Growth and backlog are strong enough to list on. The concentration is the story: losing either of the top two customers would erase a year of growth, and both are building in-house teams.",
+      "counterpoints": [
+        "Backlog definitions in the filing include non-binding letters of intent"
+      ],
+      "sources": [
+        {
+          "id": 117,
+          "title": "Tallowmere Robotics files registration statement",
+          "url": "https://example.com/news/tallowmere-filing",
+          "published_at": "2026-03-04T06:40:00Z"
+        }
+      ]
+    },
+    {
+      "cluster_id": "evt-20260303-vellmark-rate-hold",
+      "action": "update",
+      "title": "Vellmark two-year yield falls 14bp after the hold",
+      "takeaway": "Bond markets took the dropped tightening bias at face value and now price a cut by June.",
+      "priority": "P1",
+      "tag": "Macro",
+      "display": "collapsed",
+      "depth": "standard",
+      "read_budget_min": 3,
+      "what_changed": "The two-year yield fell 14bp to 3.71%; swaps now imply a 70% chance of a cut by June, up from 35%.",
+      "data_points": [
+        "Two-year yield 3.71%, the lowest since October",
+        "Currency down 0.8% against its trade-weighted basket"
+      ],
+      "counterpoints": [
+        "One member who voted to hold said in an interview that June is \"too early to discuss\""
+      ],
+      "sources": [
+        {
+          "id": 118,
+          "title": "Vellmark short-dated yields drop as markets price June cut",
+          "url": "https://example.com/news/vellmark-yields",
+          "published_at": "2026-03-04T09:15:00Z"
+        }
+      ]
+    },
+    {
+      "cluster_id": "evt-20260302-northwind-capex",
+      "action": "update",
+      "title": "Northwind capex: two brokers question the return on packaging spend",
+      "takeaway": "The first organised pushback: the spend is real, the payback period is the debate.",
+      "priority": "P2",
+      "tag": "Earnings",
+      "display": "collapsed",
+      "depth": "standard",
+      "read_budget_min": 3,
+      "what_changed": "Two brokers cut their ratings, estimating a payback period of 6.5 years on the packaging lines against management's 4.",
+      "data_points": [
+        "Estimated payback 6.5 years versus 4 years guided",
+        "Free cash flow margin forecast for 2026 cut from 21% to 16%"
+      ],
+      "sources": [
+        {
+          "id": 119,
+          "title": "Brokers split on Northwind's packaging bet",
+          "url": "https://example.com/news/northwind-broker-pushback",
+          "published_at": "2026-03-04T07:55:00Z"
+        }
+      ]
+    },
+    {
+      "cluster_id": "evt-20260304-larkspur-prices",
+      "action": "new",
+      "title": "Larkspur Coffee raises menu prices by 6%",
+      "takeaway": "The second increase in eight months, and traffic was already falling.",
+      "priority": "P2",
+      "tag": "Consumer",
+      "display": "collapsed",
+      "depth": "standard",
+      "read_budget_min": 3,
+      "data_points": [
+        "Average menu price +6% from March 15",
+        "Store traffic was -2.1% last quarter"
+      ],
+      "sources": [
+        {
+          "id": 120,
+          "title": "Larkspur Coffee raises prices as bean costs climb",
+          "url": "https://example.com/news/larkspur-prices",
+          "published_at": "2026-03-04T10:20:00Z"
+        }
+      ]
+    },
+    {
+      "cluster_id": "evt-20260304-harrowgate-route",
+      "action": "new",
+      "title": "Harrowgate Freight opens a new coastal route",
+      "takeaway": "",
+      "priority": "Archive",
+      "tag": "Other",
+      "display": "line",
+      "depth": "standard",
+      "read_budget_min": 0,
+      "sources": [
+        {
+          "id": 121,
+          "title": "Harrowgate Freight opens a new coastal route",
+          "url": "https://example.com/news/harrowgate-route",
+          "published_at": "2026-03-04T13:00:00Z"
+        }
+      ]
+    }
+  ],
+  "insights": [
+    {
+      "observation": "Northwind's customers prepay for capacity while cloud vendors cut the price of using it.",
+      "idea": "Somewhere between the two, someone is absorbing the margin. Who?"
+    }
+  ]
+}

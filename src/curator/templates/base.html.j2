@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Curator{% endblock %}</title>
+<link rel="stylesheet" href="{{ root }}assets/style.css">
+</head>
+<body>
+<nav class="topnav">
+  <a href="{{ root }}index.html">Digest</a>
+  {% block nav %}{% endblock %}
+</nav>
+<main>
+{% block content %}{% endblock %}
+</main>
+<footer class="sitefoot">curator · local static site · rendered from report JSON</footer>
+{% block js %}{% endblock %}
+</body>
+</html>

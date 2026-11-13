@@ -1,0 +1,174 @@
+{
+  "date": "2026-03-02",
+  "run_id": "20260302-0632",
+  "window": {
+    "from": "2026-03-01T14:00:00Z",
+    "to": "2026-03-02T14:00:00Z"
+  },
+  "stats": {
+    "raw_items": 84,
+    "events": 6,
+    "est_read_min": 17,
+    "raw_chars": 212000,
+    "digest_chars": 3800
+  },
+  "events": [
+    {
+      "cluster_id": "evt-20260302-northwind-capex",
+      "action": "new",
+      "title": "Northwind Semiconductor lifts 2026 capex guidance by 30%",
+      "takeaway": "Northwind is spending into strength: the raise is funded by prepayments, not debt.",
+      "priority": "P0",
+      "tag": "Earnings",
+      "display": "expanded",
+      "depth": "standard",
+      "read_budget_min": 8,
+      "data_points": [
+        "2026 capex guided to **NWD 26bn**, up from NWD 20bn three months ago",
+        "Customer prepayments reached NWD 7.4bn, covering 28% of the plan",
+        "Q4 gross margin 54.1%, up 180bp year on year",
+        "Two thirds of the increase goes to advanced packaging, not wafer capacity"
+      ],
+      "argument": "Consensus expected a flat capex year after two years of expansion. The raise breaks that, but the mix matters more than the size: packaging is where lead times are longest, so this reads as removing a bottleneck rather than adding supply. If prepayments keep funding more than a quarter of the plan, the usual late-cycle balance-sheet risk is muted.",
+      "counterpoints": [
+        "Prepayments can be renegotiated; the last downcycle saw 40% of them deferred",
+        "Management raised capex at the 2022 peak too, one quarter before orders rolled over"
+      ],
+      "sources": [
+        {
+          "id": 101,
+          "title": "Northwind Semiconductor Q4 results and 2026 outlook",
+          "url": "https://example.com/news/northwind-q4-results",
+          "published_at": "2026-03-02T07:10:00Z"
+        },
+        {
+          "id": 102,
+          "title": "Northwind call notes: where the extra capex goes",
+          "url": "https://example.com/news/northwind-call-notes",
+          "published_at": "2026-03-02T09:40:00Z"
+        }
+      ]
+    },
+    {
+      "cluster_id": "evt-20260302-halcyon-price-cut",
+      "action": "new",
+      "title": "Halcyon Cloud cuts inference prices by 40%",
+      "takeaway": "Halcyon is trading margin for share while its unit costs are falling faster than list prices.",
+      "priority": "P1",
+      "tag": "Trends",
+      "display": "expanded",
+      "depth": "standard",
+      "read_budget_min": 5,
+      "data_points": [
+        "List price for the standard tier falls from $2.50 to $1.50 per million tokens",
+        "Halcyon says its serving cost fell 55% over the past year",
+        "The cut applies to new and existing contracts from April 1"
+      ],
+      "argument": "A price cut smaller than the cost decline keeps unit margin intact, so this is less a price war than a pass-through. The open question is whether rivals with older fleets can follow without losing money.",
+      "counterpoints": [
+        "Cost figures are self-reported and exclude depreciation on new capacity"
+      ],
+      "sources": [
+        {
+          "id": 103,
+          "title": "Halcyon Cloud publishes new inference price list",
+          "url": "https://example.com/news/halcyon-price-list",
+          "published_at": "2026-03-02T11:05:00Z"
+        }
+      ]
+    },
+    {
+      "cluster_id": "evt-20260302-orchard-lane-q4",
+      "action": "new",
+      "title": "Orchard Lane Grocers Q4: volumes up, margin flat",
+      "takeaway": "Volume growth returned, but it was bought with promotions.",
+      "priority": "P1",
+      "tag": "Earnings",
+      "display": "collapsed",
+      "depth": "standard",
+      "read_budget_min": 3,
+      "data_points": [
+        "Same-store volume +2.3%, the first positive print in five quarters",
+        "Operating margin 3.1%, unchanged; promotional intensity up 90bp"
+      ],
+      "counterpoints": [
+        "One quarter of volume does not make a trend when it coincides with heavier discounting"
+      ],
+      "sources": [
+        {
+          "id": 104,
+          "title": "Orchard Lane Grocers reports fourth-quarter results",
+          "url": "https://example.com/news/orchard-lane-q4",
+          "published_at": "2026-03-02T06:30:00Z"
+        }
+      ]
+    },
+    {
+      "cluster_id": "evt-20260302-varrow-recall",
+      "action": "new",
+      "title": "Varrow Motors recalls 48,000 compact SUVs",
+      "takeaway": "A contained recall: one supplier, one model year, fix already available.",
+      "priority": "P2",
+      "tag": "Consumer",
+      "display": "collapsed",
+      "depth": "standard",
+      "read_budget_min": 3,
+      "data_points": [
+        "48,000 vehicles from the 2025 model year",
+        "Estimated cost $31m, about 2% of annual operating profit"
+      ],
+      "sources": [
+        {
+          "id": 105,
+          "title": "Varrow Motors announces recall over brake sensor fault",
+          "url": "https://example.com/news/varrow-recall",
+          "published_at": "2026-03-02T12:20:00Z"
+        }
+      ]
+    },
+    {
+      "cluster_id": "evt-20260302-harrowgate-cfo",
+      "action": "new",
+      "title": "Harrowgate Freight names new CFO",
+      "takeaway": "",
+      "priority": "Archive",
+      "tag": "Other",
+      "display": "line",
+      "depth": "standard",
+      "read_budget_min": 0,
+      "sources": [
+        {
+          "id": 106,
+          "title": "Harrowgate Freight names new CFO",
+          "url": "https://example.com/news/harrowgate-cfo",
+          "published_at": "2026-03-02T08:15:00Z"
+        }
+      ]
+    },
+    {
+      "cluster_id": "evt-20260302-vellmark-trade-date",
+      "action": "new",
+      "title": "Vellmark statistics office moves trade data release",
+      "takeaway": "",
+      "priority": "Archive",
+      "tag": "Macro",
+      "display": "line",
+      "depth": "standard",
+      "read_budget_min": 0,
+      "sources": [
+        {
+          "id": 107,
+          "title": "Vellmark statistics office moves trade data release to March 9",
+          "url": "https://example.com/news/vellmark-trade-calendar",
+          "published_at": "2026-03-02T10:00:00Z"
+        }
+      ]
+    }
+  ],
+  "insights": [
+    {
+      "observation": "Both headline stories today are about who pays for capacity: customers at Northwind, the vendor at Halcyon.",
+      "idea": "Track prepayment share as a cleaner cycle signal than capex itself."
+    }
+  ]
+}

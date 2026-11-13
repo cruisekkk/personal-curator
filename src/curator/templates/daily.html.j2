@@ -1,0 +1,155 @@
+{% extends "base.html.j2" %}
+{% block title %}{{ date }} Daily digest{% endblock %}
+{% block nav %}
+  <a href="{{ root }}weekly/{{ week }}.html">This week</a>
+  <span class="navnote">{{ date }} {{ weekday }}</span>
+{% endblock %}
+{% block content %}
+<header class="pagehead">
+  <h1>{{ date }} {{ weekday }} · Daily digest</h1>
+  <p class="statline">
+    Est. reading time <b>{{ stats.est_read_min }}</b> min
+    · {{ stats.raw_items }} raw items → {{ stats.events }} events
+    {%- if stats.updated_events %} ({{ stats.updated_events }} updated){% endif %}
+    {%- if stats.deep_reads %} · {{ stats.deep_reads }} deep read{{ 's' if stats.deep_reads > 1 }}{% endif %}
+  </p>
+  <p class="chips">
+  {% for tag, n in tag_counts.items() %}
+    <span class="chip">{{ tag }} {{ n }}</span>
+  {% endfor %}
+  </p>
+</header>
+
+<section class="l0">
+  <h2>At a glance <button class="toggleall" hidden>Expand all</button></h2>
+  <p class="hint">Folded items open on click and do not count toward the budget; the weakest items are links only.</p>
+  <ul class="l0list">
+  {% for e in expanded %}
+    <li>
+      <span class="badge {{ e.priority }}">{{ e.priority }}</span><span class="min">{{ e.read_budget_min }}m</span><span class="tag">{{ e.tag }}</span>
+      <a class="l0link" href="#{{ e.cluster_id }}">{{ e.takeaway | scan }}</a>
+    </li>
+  {% endfor %}
+  </ul>
+
+  {% for e in collapsed %}
+  <details class="mini">
+    <summary>
+      <span class="badge {{ e.priority }}">{{ e.priority }}</span><span class="tag">{{ e.tag }}</span>
+      <span class="minititle">{{ e.title }}</span>
+    </summary>
+    <div class="minibody">
+      {% if e.action == 'update' and e.what_changed %}
+      <p class="changed">Since last time · {{ e.what_changed | mdi }}</p>
+      {% endif %}
+      {% if e.takeaway and e.takeaway != e.title %}<p class="takeaway">{{ e.takeaway | mdi }}</p>{% endif %}
+      {% if e.data_points %}
+      <ul class="datapoints">
+        {% for p in e.data_points %}<li>{{ p | mdi }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+      {% if e.counterpoints %}
+      <div class="doubt"><b>Doubts to keep</b>
+        <ul>{% for c in e.counterpoints %}<li>{{ c | mdi }}</li>{% endfor %}</ul>
+      </div>
+      {% endif %}
+      {% if e.sources %}
+      <p class="sources">
+        {% for s in e.sources %}<a href="{{ s.url }}">{{ s.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}
+      </p>
+      {% endif %}
+    </div>
+  </details>
+  {% endfor %}
+
+  {% if lines %}
+  <p class="archive"><b>Links only</b> ·
+    {% for e in lines %}
+      {% if e.sources %}
+        {% for s in e.sources %}<a href="{{ s.url }}">{{ s.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}
+      {% else %}
+        <span class="muted">{{ e.takeaway or e.title }}</span>
+      {% endif %}
+      {% if not loop.last %} · {% endif %}
+    {% endfor %}
+  </p>
+  {% endif %}
+</section>
+
+<section class="l1">
+  <h2>Briefs</h2>
+  {% for e in expanded %}
+  <article class="card{% if e.depth == 'deep' %} deep{% endif %}" id="{{ e.cluster_id }}">
+    <header class="cardmeta">
+      <span class="badge {{ e.priority }}">{{ e.priority }}</span>
+      <span class="tag">{{ e.tag }}</span>
+      <span class="min">{{ e.read_budget_min }} min</span>
+      {% if e.depth == 'deep' %}<span class="deeptag">Deep read</span>{% endif %}
+      {% if e.sources and e.sources | length > 1 %}<span class="merged">{{ e.sources | length }} sources merged</span>{% endif %}
+    </header>
+    <h3>{{ e.title }}</h3>
+    {% if e.action == 'update' and e.what_changed %}
+    <p class="changed">Since last time · {{ e.what_changed | mdi }}</p>
+    {% endif %}
+    <div class="takeaway">{{ e.takeaway | md }}</div>
+
+    {% if e.depth == 'deep' %}
+    <div class="deepbody">{{ e.body_md | md }}</div>
+    {% else %}
+      {% if e.data_points %}
+      <ul class="datapoints">
+        {% for p in e.data_points %}<li>{{ p | mdi }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+      {% if e.argument %}<p class="argument">{{ e.argument | mdi }}</p>{% endif %}
+    {% endif %}
+
+    {% for v in e.visuals or [] %}
+    <figure class="visual">
+      {{ v.svg | safe }}
+      <figcaption>{{ v.title }}</figcaption>
+    </figure>
+    {% endfor %}
+
+    {% if e.counterpoints %}
+    <div class="doubt">
+      <b>{% if e.depth == 'deep' %}Risks / the other side{% else %}Doubts to keep{% endif %}</b>
+      <ul>{% for c in e.counterpoints %}<li>{{ c | mdi }}</li>{% endfor %}</ul>
+    </div>
+    {% endif %}
+
+    {% if e.sources %}
+    <p class="sources">Sources:
+      {% for s in e.sources %}<a href="{{ s.url }}">{{ s.title }}</a>{% if not loop.last %} · {% endif %}{% endfor %}
+    </p>
+    {% endif %}
+  </article>
+  {% endfor %}
+</section>
+
+{% include "_insights.html.j2" %}
+
+{% if stats.raw_chars and stats.digest_chars %}
+<p class="pagefoot">
+  ~{{ (stats.raw_chars / 1000) | round | int }}k chars raw → {{ (stats.digest_chars / 1000) | round(1) }}k chars
+  · compression ~{{ (stats.raw_chars / stats.digest_chars) | round | int }}:1
+  · est. {{ stats.est_read_min }} min · run {{ d.run_id }}
+</p>
+{% endif %}
+{% endblock %}
+{% block js %}
+<script>
+(function () {
+  var btn = document.querySelector(".toggleall");
+  var minis = document.querySelectorAll("details.mini");
+  if (!btn || !minis.length) return;
+  btn.hidden = false;
+  var open = false;
+  btn.addEventListener("click", function () {
+    open = !open;
+    minis.forEach(function (d) { d.open = open; });
+    btn.textContent = open ? "Collapse all" : "Expand all";
+  });
+})();
+</script>
+{% endblock %}

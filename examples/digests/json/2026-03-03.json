@@ -1,0 +1,187 @@
+{
+  "date": "2026-03-03",
+  "run_id": "20260303-0635",
+  "window": {
+    "from": "2026-03-02T14:00:00Z",
+    "to": "2026-03-03T14:00:00Z"
+  },
+  "stats": {
+    "raw_items": 97,
+    "events": 6,
+    "est_read_min": 32,
+    "updated_events": 1,
+    "deep_reads": 1,
+    "raw_chars": 268000,
+    "digest_chars": 5400
+  },
+  "events": [
+    {
+      "cluster_id": "evt-20260303-vellmark-rate-hold",
+      "action": "new",
+      "title": "Vellmark Reserve Authority holds its policy rate at 4.25%",
+      "takeaway": "The hold was expected; dropping the phrase \"further tightening\" was not.",
+      "priority": "P0",
+      "tag": "Macro",
+      "display": "expanded",
+      "depth": "standard",
+      "read_budget_min": 8,
+      "data_points": [
+        "Policy rate unchanged at **4.25%** for the fourth meeting in a row",
+        "The statement no longer says \"further tightening may be appropriate\"",
+        "Vote was 7-2; both dissenters preferred a 25bp cut",
+        "Core inflation forecast for year-end trimmed from 3.1% to 2.8%"
+      ],
+      "argument": "Markets priced a hold with unchanged guidance. Removing the tightening bias and showing two dissents for a cut moves the debate from whether to cut to when. The inflation forecast trim gives the committee cover, but it rests on a single soft services print.",
+      "counterpoints": [
+        "The governor said twice that the committee is \"in no hurry\"",
+        "Wage growth is still 4.6%, well above what a 2.8% inflation forecast implies"
+      ],
+      "sources": [
+        {
+          "id": 108,
+          "title": "Vellmark Reserve Authority policy statement, March 2026",
+          "url": "https://example.com/news/vra-decision",
+          "published_at": "2026-03-03T09:00:00Z"
+        },
+        {
+          "id": 109,
+          "title": "Governor's press conference: key quotes",
+          "url": "https://example.com/news/vra-press-conference",
+          "published_at": "2026-03-03T10:30:00Z"
+        }
+      ]
+    },
+    {
+      "cluster_id": "evt-20260303-memory-cycle-note",
+      "action": "new",
+      "title": "Calder Street Research: the memory upcycle is a supply story",
+      "takeaway": "Supply growth is halving while demand stays flat, so pricing power comes from discipline, not from a boom.",
+      "priority": "P1",
+      "tag": "Research",
+      "display": "expanded",
+      "depth": "deep",
+      "read_budget_min": 15,
+      "body_md": "#### 1. Core claim and key numbers\n\nCalder Street argues that this memory upcycle is driven by **supply discipline**, not by a demand surge. The numbers it leans on:\n\n| Metric | 2024 | 2025 | 2026E | Why it matters |\n|---|---|---|---|---|\n| Industry bit supply growth | 19% | 11% | 8% | Lowest planned growth in a decade |\n| Industry bit demand growth | 14% | 12% | 13% | Roughly flat: no demand boom |\n| Inventory at makers (weeks) | 14 | 9 | 6 | Below the 8-week comfort level |\n| Contract price change | -22% | +9% | +18% | Pricing follows inventory, with a lag |\n\nThe single most important row is the first one: demand barely moves, supply growth more than halves.\n\n#### 2. The logic chain\n\n**Link one: capex went elsewhere.** Makers moved spending from new wafer capacity to packaging and process upgrades, which add far fewer bits per dollar.\n\n**Link two: inventory drained quietly.** With demand growing 12-13% against supply at 8-11%, maker inventory fell from 14 weeks to a projected 6.\n\n**Link three: pricing power returns before volumes do.** Below about 8 weeks of inventory, buyers historically accept contract increases to secure allocation.\n\n#### 3. Side threads that are easy to miss\n\n- The note assumes no new entrant ramps before 2028; one delayed fab is treated as cancelled.\n- Packaging capacity, not wafers, is the binding constraint, which links this note to the Northwind capex story.\n\n#### 4. Closing loop\n\n**Less new capacity, steady demand, thinner inventory, then price: the upcycle is a supply story, and it lasts only as long as the discipline does.**\n",
+      "counterpoints": [
+        "Supply discipline has broken in every previous cycle once prices rose for three quarters",
+        "The 2026 demand estimate comes from maker guidance, the same makers who benefit from a tight narrative",
+        "The note was published one week before two of the covered companies report, which is convenient timing"
+      ],
+      "sources": [
+        {
+          "id": 110,
+          "title": "Calder Street Research: Memory 2026, discipline over demand",
+          "url": "https://example.com/news/calder-street-memory",
+          "published_at": "2026-03-03T05:45:00Z"
+        }
+      ]
+    },
+    {
+      "cluster_id": "evt-20260302-northwind-capex",
+      "action": "update",
+      "title": "Northwind capex: Quillon Tools confirms an order pull-in",
+      "takeaway": "The first supplier confirmation: Northwind's packaging spend is showing up in order books.",
+      "priority": "P1",
+      "tag": "Earnings",
+      "display": "expanded",
+      "depth": "standard",
+      "read_budget_min": 5,
+      "what_changed": "Quillon Tools says a \"large existing customer\" moved NWD 1.1bn of packaging-tool orders from the second half into the first.",
+      "data_points": [
+        "Quillon first-half order outlook raised 15%",
+        "Lead time for bonding tools now 11 months, up from 8"
+      ],
+      "argument": "Yesterday the capex raise was a plan; today part of it is a purchase order. Longer lead times support the reading that packaging is the bottleneck.",
+      "counterpoints": [
+        "A pull-in moves orders forward; it does not by itself make the full-year total larger"
+      ],
+      "sources": [
+        {
+          "id": 111,
+          "title": "Quillon Tools raises first-half order outlook",
+          "url": "https://example.com/news/quillon-order-update",
+          "published_at": "2026-03-03T07:20:00Z"
+        }
+      ]
+    },
+    {
+      "cluster_id": "evt-20260303-brindle-finch-sales",
+      "action": "new",
+      "title": "Brindle & Finch Apparel: same-store sales down 4%",
+      "takeaway": "Weak, but in line with the warning issued in January.",
+      "priority": "P2",
+      "tag": "Consumer",
+      "display": "collapsed",
+      "depth": "standard",
+      "read_budget_min": 3,
+      "data_points": [
+        "Same-store sales -4.0% against guidance of -3% to -5%",
+        "Inventory down 9% year on year"
+      ],
+      "sources": [
+        {
+          "id": 112,
+          "title": "Brindle & Finch Apparel February trading update",
+          "url": "https://example.com/news/brindle-finch-sales",
+          "published_at": "2026-03-03T06:50:00Z"
+        }
+      ]
+    },
+    {
+      "cluster_id": "evt-20260303-equipment-basket-streak",
+      "action": "new",
+      "title": "Small-cap equipment basket rises for a ninth session",
+      "takeaway": "A momentum streak that began before the Northwind news, so that news is not the only driver.",
+      "priority": "P2",
+      "tag": "Momentum",
+      "display": "collapsed",
+      "depth": "standard",
+      "read_budget_min": 3,
+      "data_points": [
+        "Nine straight gains, +14% in total",
+        "Volume on up days is 1.6x the three-month average"
+      ],
+      "counterpoints": [
+        "Streaks of this length ended with a pullback of at least 5% in four of the last five cases"
+      ],
+      "sources": [
+        {
+          "id": 113,
+          "title": "Equipment suppliers extend winning run to nine sessions",
+          "url": "https://example.com/news/equipment-basket-streak",
+          "published_at": "2026-03-03T13:10:00Z"
+        }
+      ]
+    },
+    {
+      "cluster_id": "evt-20260303-larkspur-app",
+      "action": "new",
+      "title": "Larkspur Coffee relaunches its loyalty app",
+      "takeaway": "",
+      "priority": "Archive",
+      "tag": "Consumer",
+      "display": "line",
+      "depth": "standard",
+      "read_budget_min": 0,
+      "sources": [
+        {
+          "id": 114,
+          "title": "Larkspur Coffee relaunches its loyalty app",
+          "url": "https://example.com/news/larkspur-app",
+          "published_at": "2026-03-03T11:45:00Z"
+        }
+      ]
+    }
+  ],
+  "insights": [
+    {
+      "observation": "The memory note and the Northwind update point at the same constraint from two sides: packaging, not wafers.",
+      "idea": "Which listed suppliers earn most of their revenue from packaging tools?",
+      "source": "Calder Street note + Quillon update"
+    },
+    {
+      "observation": "Two dissents for a cut appeared in the same week that the equipment rally reached nine sessions.",
+      "idea": "Is the rally a rates trade wearing a technology costume?"
+    }
+  ]
+}

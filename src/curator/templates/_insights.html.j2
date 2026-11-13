@@ -1,0 +1,15 @@
+{# Shared tail of the daily and weekly pages: fresh observations plus a
+   possible idea direction. Filled from the report's `insights` field;
+   the whole block is omitted when it is empty. #}
+{% if insights %}
+<section class="insights">
+  <h2>Sparks <span class="h2note">fresh observations · idea starters</span></h2>
+  {% for it in insights %}
+  <div class="insight">
+    <div class="insight-obs">{{ it.observation }}</div>
+    {% if it.idea %}<div class="insight-idea">→ {{ it.idea }}</div>{% endif %}
+    {% if it.source %}<div class="insight-src">{{ it.source }}</div>{% endif %}
+  </div>
+  {% endfor %}
+</section>
+{% endif %}

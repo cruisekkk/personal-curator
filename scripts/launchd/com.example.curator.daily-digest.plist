@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- curator daily report: sleep-friendly idempotent polling.
+     A laptop that is asleep at a fixed StartCalendarInterval time never fires
+     the job, so this uses StartInterval (every 2h) plus RunAtLoad (lid open /
+     login). daily_digest_cron.sh is the guard: it exits at once when today's
+     report already exists.
+     Replace both /path/to/... placeholders with absolute paths before loading
+     (launchd does not expand ~ or $HOME); the README has a one-line sed.
+     Unload: launchctl unload -w ~/Library/LaunchAgents/com.example.curator.daily-digest.plist -->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.example.curator.daily-digest</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/path/to/curator/scripts/daily_digest_cron.sh</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/path/to/home/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+  </dict>
+  <key>StartInterval</key>
+  <integer>7200</integer>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/path/to/home/Library/Logs/curator-daily-digest.log</string>
+  <key>StandardErrorPath</key>
+  <string>/path/to/home/Library/Logs/curator-daily-digest.log</string>
+</dict>
+</plist>

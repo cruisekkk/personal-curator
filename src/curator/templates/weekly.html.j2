@@ -1,0 +1,111 @@
+{% extends "base.html.j2" %}
+{% block title %}{{ week }} Weekly digest{% endblock %}
+{% block nav %}
+  <span class="navnote">{{ week }}</span>
+{% endblock %}
+{% block content %}
+<header class="pagehead">
+  <h1>{{ week }} · Weekly digest</h1>
+  <p class="statline">
+    {% if dates %}{{ dates | first }} → {{ dates | last }} · {% endif %}
+    <b>{{ event_count }}</b> key events this week · est. {{ total_min }} min in total
+  </p>
+  <p class="chips">
+  {% for d in dates %}
+    <a class="chip" href="{{ root }}daily/{{ d }}.html">{{ d[5:] }}</a>
+  {% endfor %}
+  </p>
+</header>
+
+{% if swimlane_svg %}
+<section class="weekoverview">
+  <h2>The week in one picture</h2>
+  <figure class="weekly-chart">
+    {{ swimlane_svg }}
+    <figcaption>One row per multi-day story · dot = updated that day · ringed first dot = P0 · longer line = longer-running story</figcaption>
+  </figure>
+  {% if tagbar_svg %}
+  <figure class="weekly-chart tagbar-wrap">
+    {{ tagbar_svg }}
+  </figure>
+  {% endif %}
+</section>
+{% endif %}
+
+{% if timeline %}
+<section class="weektimeline">
+  <h2>Timeline</h2>
+  <div class="timeline">
+  {% for day in timeline %}
+    <div class="tl-day">
+      <div class="tl-marker"></div>
+      <div class="tl-date"><a href="{{ root }}daily/{{ day.date }}.html">{{ day.date[5:] }} {{ day.weekday }}</a></div>
+      <div class="tl-events">
+      {% for h in day.highlights %}
+        <a class="tl-event" href="{{ root }}daily/{{ day.date }}.html#{{ h.cluster_id }}">
+          <span class="badge {{ h.priority }}">{{ h.priority }}</span>{% if h.deep %}<span class="deeptag">Deep read</span>{% endif %}
+          <span class="dot" style="background:{{ h.color }}"></span>{{ h.title }}
+        </a>
+      {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="threads">
+  <h2>Main threads{% if not threads %} <span class="autotag">auto-picked</span>{% endif %}</h2>
+  {% if threads %}
+    {% for t in threads %}
+    <article class="card thread">
+      {% if t is mapping %}
+      <h3>{{ t.title }}</h3>
+      <p>{{ t.narrative | mdi }}</p>
+      {% if t.visual %}<figure class="weekly-chart">{{ t.visual | safe }}{% if t.visual_caption %}<figcaption>{{ t.visual_caption }}</figcaption>{% endif %}</figure>{% endif %}
+      {% if t.trail %}<p class="trail">{{ t.trail | join(" → ") }}</p>{% endif %}
+      {% else %}
+      <p>{{ t | mdi }}</p>
+      {% endif %}
+    </article>
+    {% endfor %}
+  {% elif auto_threads %}
+    <p class="hint">The longest-running stories this week, picked automatically. The weekly run replaces them with narrative threads.</p>
+    {% for e in auto_threads %}
+    <article class="card thread">
+      <header class="cardmeta">
+        <span class="badge {{ e.priority }}">{{ e.priority }}</span>
+        <span class="tag">{{ e.tag }}</span>
+        {% if e.depth == 'deep' %}<span class="deeptag">Deep read</span>{% endif %}
+        <span class="trail">{% for d in e.trail %}{{ d[5:] }}{% if not loop.last %} → {% endif %}{% endfor %} · {{ e.trail | length }} days</span>
+      </header>
+      <h3><a href="{{ root }}daily/{{ e.page }}.html#{{ e.cluster_id }}">{{ e.title }}</a></h3>
+      <p class="takeaway">{{ e.takeaway | mdi }}</p>
+    </article>
+    {% endfor %}
+  {% else %}
+    <p class="hint">Main threads are written by the weekly run.</p>
+  {% endif %}
+</section>
+
+<section class="weekevents">
+  {% for tag, evs in by_tag.items() %}
+  <h2>{{ tag }}</h2>
+  {% for e in evs %}
+  <article class="card lite">
+    <header class="cardmeta">
+      <span class="badge {{ e.priority }}">{{ e.priority }}</span>
+      {% if e.depth == 'deep' %}<span class="deeptag">Deep read</span>{% endif %}
+      <span class="trail">
+        first seen {{ e.first_seen[5:] }}{% if e.trail | length > 1 %} · {{ e.trail | length - 1 }} update{{ 's' if e.trail | length > 2 }}{% endif %}
+      </span>
+    </header>
+    <h3><a href="{{ root }}daily/{{ e.page }}.html#{{ e.cluster_id }}">{{ e.title }}</a></h3>
+    <p class="takeaway">{{ e.takeaway | mdi }}</p>
+  </article>
+  {% endfor %}
+  {% endfor %}
+</section>
+
+{% include "_insights.html.j2" %}
+{% endblock %}
