@@ -113,17 +113,6 @@ The wrappers read these environment variables, all optional:
 
 Logs go to `~/Library/Logs/curator-daily-digest.log`.
 
-## What is deliberately not included
-
-This repository is an extract of a larger private project, cut down to the part worth sharing.
-
-- **No source-specific collectors.** Only generic RSS/Atom ships; collectors written for one particular site are out of scope.
-- **No embeddings, vector search or question answering.** An earlier version had them; daily reading turned out to need clustering and ranking by an editor, not retrieval.
-- **No market data or anything related to trading.** No price charts, no tickers.
-- **No monthly or quarterly rollups, no sync to note-taking tools, no web server.** The output is static files.
-- **No real data.** The examples are synthetic, and no real reports are included.
-- **No Linux scheduler.** The wrappers are macOS-specific (launchd, keychain, BSD `stat`). The Python parts run anywhere.
-
 ## Layout
 
 ```
